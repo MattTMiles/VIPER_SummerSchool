@@ -32,7 +32,7 @@ def add_cgw(psrs, pdict, tref):
         
         #iterate the timing model fit a few times
         psr.fit(iters=5)
-	print(psr.name)
+        print(psr.name)
 
 def lt2ent(psrs):
     """ Converts libstempo pulsar objects to enterprise pulsar objects.
