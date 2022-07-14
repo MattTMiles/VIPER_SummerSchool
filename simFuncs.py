@@ -9,10 +9,10 @@ import enterprise
 from enterprise.pulsar import Pulsar
 
 
-def create_psrs(parfiles):
+def create_psrs(parfiles, obstimes, toaerr=0.4):
     psrs = []
     for file in enumerate(parfiles):
-        psrs.append(LT.fakepulsar(parfile=file, obstimes=obstimes, toaerr=0.4))
+        psrs.append(LT.fakepulsar(parfile=file, obstimes=obstimes, toaerr=toaerr))
     return psrs
 
 def add_gwb(psrs, amp=1e-14, gam=13./3.):
