@@ -28,7 +28,7 @@ def add_cgw(psrs, pdict, tref):
     """
     for psr in psrs:
         #also modifying pulsars in place
-        LT.add_cgw(psr, gwtheta=pdict['gwtheta'], gwphi=pdict['gwphi'], mc=pdict['mc'], dist=pdict['dist'], phase0=pdict['phase0'], psi=pdist['psi'], inc=pdict['inc'], pdist=1., pphase=None, psrTerm=False, evolve=False, phase_approx=False, tref=tref)
+        LT.add_cgw(psr, gwtheta=pdict['gwtheta'], gwphi=pdict['gwphi'], mc=pdict['mc'], dist=pdict['dist'], phase0=pdict['phase0'], psi=pdict['psi'], inc=pdict['inc'], pdist=1., pphase=None, psrTerm=False, evolve=False, phase_approx=False, tref=tref)
         
         #iterate the timing model fit a few times
         psr.fit(iters=5)
