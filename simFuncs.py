@@ -11,7 +11,7 @@ from enterprise.pulsar import Pulsar
 
 def create_psrs(parfiles, obstimes, toaerr=0.4):
     psrs = []
-    for file in enumerate(parfiles):
+    for file in parfiles:
         psrs.append(LT.fakepulsar(parfile=file, obstimes=obstimes, toaerr=toaerr))
     return psrs
 
