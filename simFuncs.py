@@ -21,7 +21,7 @@ def add_gwb(psrs, amp=1e-14, gam=13./3.):
     """
     LT.createGWB(psrs, amp, gam) #modifies pulsars in place, no need to return anything
     
-def add_cgw(psrs, pdict, tref):
+def add_cgw(psrs, pdict, tref, iters):
     """ Add a continuous wave signal.
         Takes in pulsar objects, a parameter dictionary for the single source, and
         a reference time for observations.
@@ -32,7 +32,7 @@ def add_cgw(psrs, pdict, tref):
         
         #iterate the timing model fit a few times
         try:
-            psr.fit(iters=5)
+            psr.fit(iters=iters)
             print(psr.name)
 	except:
             print(psr.name, 'had timing model fit issue. Excluding from PTA.')
