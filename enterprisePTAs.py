@@ -16,7 +16,7 @@ from enterprise_extensions import model_utils
 
 from PTMCMCSampler.PTMCMCSampler import PTSampler as ptmcmc
 
-def crnPTA(psrs,fixedGamma=True):
+def crnPTA(psrs,fixedGamma=True,nfreqs=10):
     Tspan = model_utils.get_tspan(psrs)
 
     efac = parameter.Constant(1.0)
@@ -29,17 +29,17 @@ def crnPTA(psrs,fixedGamma=True):
         gamma_gw = parameter.Uniform(0,7)('gw_gamma')
         
     plgw = utils.powerlaw(log10_A=log10_A_gw, gamma=gamma_gw)
-    crn = gp_signals.FourierBasisGP(plgw, components=14, Tspan=Tspan, name='gw')
+    crn = gp_signals.FourierBasisGP(plgw, components=nfreqs, Tspan=Tspan, name='gw')
 
     tm = gp_signals.TimingModel(use_svd=True)
 
-    model = ef + tm  + crn
+    model = ef + tm + crn
 
     # initialize PTA
     pta = signal_base.PTA([model(psr) for psr in psrs])
     return pta
 
-def mcSample(pta,n=1000000,outDir='./PerFreq2A/',resume=False):
+def mcSample(pta,n=1000000,outDir='./Chains/',resume=False):
     # dimension of parameter space
     ndim = len(pta.param_names)
 
