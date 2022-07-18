@@ -34,7 +34,7 @@ def add_cgw(psrs, pdict, tref, iters):
         try:
             psr.fit(iters=iters)
             print(psr.name)
-	except:
+        except:
             print(psr.name, 'had timing model fit issue. Excluding from PTA.')
 
 def lt2ent(psrs):
