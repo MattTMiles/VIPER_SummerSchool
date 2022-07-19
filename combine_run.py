@@ -248,21 +248,26 @@ os = os_bin[median_index]
 o_sig = os_sig_bin[median_index]
 
 print("Found SNR: {}".format(snr))
-with open(results_dir+'/params_'+name+'.txt', 'w') as f:
-    
-    f.write("OS_sig: {} \n".format(os_sig))
-    f.write("OS: {} \n".format(os))
-    f.write("SNR: {} \n".format(snr))
-
 if ss_mass is not None:
     with open(results_dir+'/params_'+name+'.txt', 'w') as f:
+        
+        f.write("OS_sig: {} \n".format(os_sig))
+        f.write("OS: {} \n".format(os))
+        f.write("SNR: {} \n".format(snr))
+        
         for key, value in pdict.items(): 
 
             f.write('%s:%s\n' % (key, value))
-
         f.close()
+
+
 else:
-    f.close()
+    with open(results_dir+'/params_'+name+'.txt', 'w') as f:
+        f.write("OS_sig: {} \n".format(os_sig))
+        f.write("OS: {} \n".format(os))
+        f.write("SNR: {} \n".format(snr))
+        f.close()
+
 print("Wrote data file")
 
 plotBinnedCrossCor(xi,rho,sig,os)
