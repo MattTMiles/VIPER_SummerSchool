@@ -103,6 +103,7 @@ os_sig_bin = []
 
 if realisations is not None:
     while ii < realisations+1:
+        print("Realisation: {}".format(ii))
         
         psrs = create_psrs(parfiles, obstimes=obstimes)
 
@@ -239,12 +240,14 @@ else:
     
     df = pd.DataFrame(np.array(data).T,columns = ["xi","rho","sig"])
     
-
+print("About to save data")
 df.to_pickle(results_dir+'/data_'+name)
+print("Saved data")
 
 os = os_bin[median_index]
 o_sig = os_sig_bin[median_index]
-    
+
+print("Found SNR: {}".format(snr))
 with open(results_dir+'/params_'+name+'.txt', 'w') as f:
     
     f.write("OS_sig: {} \n".format(os_sig))
@@ -260,8 +263,9 @@ if ss_mass is not None:
         f.close()
 else:
     f.close()
+print("Wrote data file")
 
 plotBinnedCrossCor(xi,rho,sig,os)
 plt.savefig(results_dir+"/"+name+"ORF.jpg")
 plt.close()
-
+print("Saved figure")
