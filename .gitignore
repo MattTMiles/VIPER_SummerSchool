@@ -1,3 +1,4 @@
 slurm*
 results*
 core*
+*.pyc
