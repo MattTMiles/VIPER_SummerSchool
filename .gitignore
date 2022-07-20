@@ -2,3 +2,5 @@ slurm*
 results*
 core*
 *.pyc
+.ipynb_checkpoints
+__pycache__
